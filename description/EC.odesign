@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:description_3="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:properties-ext-widgets-reference="http://www.eclipse.org/sirius/properties/1.0.0/ext/widgets/reference" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_2="http://www.eclipse.org/sirius/diagram/sequence/description/tool/2.0.0" name="requirementmodel" version="12.0.0.2017041100">
   <ownedViewpoints name="EdgeCloudModel" modelFileExtension="ecmodel">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Use Case Diagram" initialisation="true" showOnStartup="true" domainClass="eCModel.UseCaseModel" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Use Case Diagram" domainClass="eCModel.UseCaseModel" enablePopupBars="true">
       <layout xsi:type="description_1:CompositeLayout" direction="LeftToRight"/>
       <defaultLayer name="Default">
         <nodeMappings name="Actor" labelDirectEdit="//@ownedViewpoints[name='EdgeCloudModel']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Label']" doubleClickDescription="//@ownedViewpoints[name='EdgeCloudModel']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='openEEFUCD']" domainClass="eCModel.Actor">
@@ -1510,7 +1510,7 @@
       <defaultLayer name="Default">
         <nodeMappings xsi:type="description_2:InstanceRoleMapping" name="Participant" semanticCandidatesExpression="feature:participants" semanticElements="var:self" doubleClickDescription="//@ownedViewpoints[name='EdgeCloudModel']/@ownedRepresentations[name='SequenceDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='openSSDEEF']" synchronizationLock="true" domainClass="eCModel.Participant">
           <borderedNodeMappings xsi:type="description_2:ExecutionMapping" name="Lifeline" semanticCandidatesExpression="var:self" semanticElements="var:self" doubleClickDescription="//@ownedViewpoints[name='EdgeCloudModel']/@ownedRepresentations[name='SequenceDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='openSSDEEF']" synchronizationLock="true" domainClass="eCModel.Participant" startingEndFinderExpression="var:self" finishingEndFinderExpression="var:self">
-            <borderedNodeMappings xsi:type="description_2:ExecutionMapping" name="Execution" deletionDescription="//@ownedViewpoints[name='EdgeCloudModel']/@ownedRepresentations[name='SequenceDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='ExecutionDelete']" semanticCandidatesExpression="aql:diagram.target.executions->select(e | e.owner = self)" synchronizationLock="true" domainClass="eCModel.Execution" startingEndFinderExpression="feature:start" finishingEndFinderExpression="feature:end">
+            <borderedNodeMappings xsi:type="description_2:ExecutionMapping" name="Execution" deletionDescription="//@ownedViewpoints[name='EdgeCloudModel']/@ownedRepresentations[name='SequenceDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='ExecutionDelete']" semanticCandidatesExpression="aql:diagram.target.executions->select(e | e.owner = self)" synchronizationLock="true" domainClass="eCModel.Execution" reusedBorderedNodeMappings="//@ownedViewpoints[name='EdgeCloudModel']/@ownedRepresentations[name='SequenceDiagram']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']" startingEndFinderExpression="feature:start" finishingEndFinderExpression="feature:end">
               <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="" resizeKind="NORTH_SOUTH" width="1" height="6" color="//@userColorsPalettes[name='Dutch%20Seas']/@entries[name='Glint%20on%20the%20ocean']">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -2681,7 +2681,59 @@
         <toolSections/>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedJavaExtensions qualifiedClassName="zzy.sirius.ecdesign.SequenceDiagramServices"/>
+    <ownedRepresentations xsi:type="description_2:SequenceDiagramDescription" name="CollaborationSequenceDiagram" domainClass="eCModel.Collaboration" preconditionExpression="aql:self.hello()" enablePopupBars="true" endsOrdering="aql:self.getEnds()" instanceRolesOrdering="aql:self.getParticipants()">
+      <defaultLayer name="Default">
+        <nodeMappings xsi:type="description_2:InstanceRoleMapping" name="CParticipant" semanticCandidatesExpression="aql:self.getParticipants()" semanticElements="var:self" synchronizationLock="true" domainClass="eCModel.CParticipant">
+          <borderedNodeMappings xsi:type="description_2:ExecutionMapping" name="CLifeline" semanticCandidatesExpression="var:self" semanticElements="var:self" synchronizationLock="true" domainClass="eCModel.CParticipant" startingEndFinderExpression="var:self" finishingEndFinderExpression="var:self">
+            <borderedNodeMappings xsi:type="description_2:ExecutionMapping" name="CExecution" semanticCandidatesExpression="aql:diagram.target.getExecutions(self)" synchronizationLock="true" domainClass="eCModel.CExecution" startingEndFinderExpression="feature:sender" finishingEndFinderExpression="feature:receiver">
+              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="" resizeKind="NORTH_SOUTH" width="1" height="6" color="//@userColorsPalettes[name='Dutch%20Seas']/@entries[name='Glint%20on%20the%20ocean']">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </borderedNodeMappings>
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="2" borderLineStyle="dot" showIcon="false" labelExpression="" resizeKind="NSEW" width="1" height="100">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </borderedNodeMappings>
+          <conditionnalStyles predicateExpression="aql:self.oclIsTypeOf(eCModel::Service)">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="aql: ':' + self.name" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW" width="12" height="5">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.oclIsTypeOf(eCModel::Actor)">
+            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="aql: ':' + self.name" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/net.mydreamy.requirementmodel.design/images/actor.svg">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.oclIsTypeOf(eCModel::CParticipant)">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="aql: ':' + self.name" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW" width="12" height="5">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            </style>
+          </conditionnalStyles>
+        </nodeMappings>
+        <edgeMappings xsi:type="description_2:BasicMessageMapping" name="CallMessage" deletionDescription="//@ownedViewpoints[name='EdgeCloudModel']/@ownedRepresentations[name='SequenceDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CallMessageDelete']" semanticCandidatesExpression="aql:self.getMessages()" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='EdgeCloudModel']/@ownedRepresentations[name='CollaborationSequenceDiagram']/@defaultLayer/@nodeMappings[name='CParticipant']/@borderedNodeMappings[name='CLifeline'] //@ownedViewpoints[name='EdgeCloudModel']/@ownedRepresentations[name='CollaborationSequenceDiagram']/@defaultLayer/@nodeMappings[name='CParticipant']/@borderedNodeMappings[name='CLifeline']/@borderedNodeMappings[name='CExecution']" targetMapping="//@ownedViewpoints[name='EdgeCloudModel']/@ownedRepresentations[name='CollaborationSequenceDiagram']/@defaultLayer/@nodeMappings[name='CParticipant']/@borderedNodeMappings[name='CLifeline'] //@ownedViewpoints[name='EdgeCloudModel']/@ownedRepresentations[name='CollaborationSequenceDiagram']/@defaultLayer/@nodeMappings[name='CParticipant']/@borderedNodeMappings[name='CLifeline']/@borderedNodeMappings[name='CExecution']" targetFinderExpression="aql:diagram.target.getMessageFinishTarget(self)" sourceFinderExpression="aql:diagram.target.getMessageStartTarget(self)" domainClass="eCModel.CMessage" useDomainElement="true" sendingEndFinderExpression="feature:sender" receivingEndFinderExpression="feature:receiver">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <centerLabelStyleDescription labelSize="10" showIcon="false" labelExpression="aql:self.op.name + ' ('  + self.op.parameter.name->sep(', ') + ')'">
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="org.zzy.sirius.services.SequenceDiagramServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.zzy.sirius.services.CollaborationServices"/>
   </ownedViewpoints>
   <userColorsPalettes name="Dutch Seas">
     <entries xsi:type="description:InterpolatedColor" name="Interpolated blue for Executions" colorValueComputationExpression="">
