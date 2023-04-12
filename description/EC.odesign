@@ -2724,7 +2724,7 @@
         <edgeMappings xsi:type="description_2:BasicMessageMapping" name="CCallMessage" deletionDescription="//@ownedViewpoints[name='EdgeCloudModel']/@ownedRepresentations[name='SequenceDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CallMessageDelete']" semanticCandidatesExpression="aql:self.getMessages()" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='EdgeCloudModel']/@ownedRepresentations[name='CollaborationSequenceDiagram']/@defaultLayer/@nodeMappings[name='CParticipant']/@borderedNodeMappings[name='CLifeline'] //@ownedViewpoints[name='EdgeCloudModel']/@ownedRepresentations[name='CollaborationSequenceDiagram']/@defaultLayer/@nodeMappings[name='CParticipant']/@borderedNodeMappings[name='CLifeline']/@borderedNodeMappings[name='CExecution']" targetMapping="//@ownedViewpoints[name='EdgeCloudModel']/@ownedRepresentations[name='CollaborationSequenceDiagram']/@defaultLayer/@nodeMappings[name='CParticipant']/@borderedNodeMappings[name='CLifeline'] //@ownedViewpoints[name='EdgeCloudModel']/@ownedRepresentations[name='CollaborationSequenceDiagram']/@defaultLayer/@nodeMappings[name='CParticipant']/@borderedNodeMappings[name='CLifeline']/@borderedNodeMappings[name='CExecution']" targetFinderExpression="feature:targetPoint" sourceFinderExpression="feature:sourcePoint" domainClass="eCModel.CMessage" useDomainElement="true" sendingEndFinderExpression="feature:sender" receivingEndFinderExpression="feature:receiver">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
-            <centerLabelStyleDescription labelSize="10" showIcon="false" labelExpression="aql:self.op.name + ' ('  + self.op.parameter.name->sep(', ') + ')'">
+            <centerLabelStyleDescription labelSize="10" showIcon="false" labelExpression="feature:operation">
               <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
@@ -2733,12 +2733,32 @@
         <edgeMappings xsi:type="description_2:BasicMessageMapping" name="CReturnMessage" deletionDescription="//@ownedViewpoints[name='EdgeCloudModel']/@ownedRepresentations[name='SequenceDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CallMessageDelete']" semanticCandidatesExpression="aql:self.getReturnMessages()" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='EdgeCloudModel']/@ownedRepresentations[name='CollaborationSequenceDiagram']/@defaultLayer/@nodeMappings[name='CParticipant']/@borderedNodeMappings[name='CLifeline'] //@ownedViewpoints[name='EdgeCloudModel']/@ownedRepresentations[name='CollaborationSequenceDiagram']/@defaultLayer/@nodeMappings[name='CParticipant']/@borderedNodeMappings[name='CLifeline']/@borderedNodeMappings[name='CExecution']" targetMapping="//@ownedViewpoints[name='EdgeCloudModel']/@ownedRepresentations[name='CollaborationSequenceDiagram']/@defaultLayer/@nodeMappings[name='CParticipant']/@borderedNodeMappings[name='CLifeline'] //@ownedViewpoints[name='EdgeCloudModel']/@ownedRepresentations[name='CollaborationSequenceDiagram']/@defaultLayer/@nodeMappings[name='CParticipant']/@borderedNodeMappings[name='CLifeline']/@borderedNodeMappings[name='CExecution']" targetFinderExpression="feature:targetPoint" sourceFinderExpression="feature:sourcePoint" domainClass="eCModel.CMessage" useDomainElement="true" sendingEndFinderExpression="feature:sender" receivingEndFinderExpression="feature:receiver">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
-            <centerLabelStyleDescription labelSize="10" showIcon="false" labelExpression="aql:self.op.name + ' ('  + self.op.parameter.name->sep(', ') + ')'">
+            <centerLabelStyleDescription labelSize="10" showIcon="false" labelExpression="feature:operation">
               <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
+        <containerMappings xsi:type="description_2:CombinedFragmentMapping" name="CFragment" deletionDescription="//@ownedViewpoints[name='EdgeCloudModel']/@ownedRepresentations[name='SequenceDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='CombinedFragementDelete']" semanticCandidatesExpression="service:getFragments()" synchronizationLock="true" domainClass="eCModel.CFragment" startingEndFinderExpression="feature:start" finishingEndFinderExpression="feature:finish" coveredLifelinesExpression="feature:coveredLifelines">
+          <subContainerMappings xsi:type="description_2:OperandMapping" name="COperand" deletionDescription="//@ownedViewpoints[name='EdgeCloudModel']/@ownedRepresentations[name='SequenceDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='OperandDelete']" semanticCandidatesExpression="feature:operands" synchronizationLock="true" domainClass="eCModel.COperand" startingEndFinderExpression="feature:start" finishingEndFinderExpression="feature:finish">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelSize="10" showIcon="false" labelExpression="aql:'  [' + self.condition + ']'" labelAlignment="LEFT" heightComputationExpression="10">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="2" borderLineStyle="dash" labelSize="10" showIcon="false" labelExpression="aql:self.operator" labelAlignment="LEFT" heightComputationExpression="50" backgroundStyle="Liquid">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelFormat>bold</labelFormat>
+            <labelFormat>italic</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
+          </style>
+        </containerMappings>
       </defaultLayer>
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org.zzy.sirius.services.SequenceDiagramServices"/>
