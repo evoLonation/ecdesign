@@ -2697,22 +2697,14 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </borderedNodeMappings>
-          <conditionnalStyles predicateExpression="aql:self.oclIsTypeOf(eCModel::Service)">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="aql: ':' + self.name" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW" width="12" height="5">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelFormat>bold</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
-            </style>
-          </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:self.oclIsTypeOf(eCModel::Actor)">
+          <conditionnalStyles predicateExpression="aql:self.isActor=true">
             <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="aql: ':' + self.name" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/net.mydreamy.requirementmodel.design/images/actor.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:self.oclIsTypeOf(eCModel::CLifeline)">
+          <conditionnalStyles predicateExpression="aql:self.isActor=false">
             <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="aql: ':' + self.name" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW" width="12" height="5">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelFormat>bold</labelFormat>
@@ -2741,7 +2733,7 @@
         </edgeMappings>
         <containerMappings xsi:type="description_2:CombinedFragmentMapping" name="CFragment" deletionDescription="//@ownedViewpoints[name='EdgeCloudModel']/@ownedRepresentations[name='SequenceDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='CombinedFragementDelete']" semanticCandidatesExpression="service:getFragments()" synchronizationLock="true" domainClass="eCModel.CFragment" startingEndFinderExpression="feature:start" finishingEndFinderExpression="feature:finish" coveredLifelinesExpression="feature:coveredLifelines">
           <subContainerMappings xsi:type="description_2:OperandMapping" name="COperand" deletionDescription="//@ownedViewpoints[name='EdgeCloudModel']/@ownedRepresentations[name='SequenceDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='OperandDelete']" semanticCandidatesExpression="feature:operands" synchronizationLock="true" domainClass="eCModel.COperand" startingEndFinderExpression="feature:start" finishingEndFinderExpression="feature:finish">
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelSize="10" showIcon="false" labelExpression="aql:'  [' + self.condition + ']'" labelAlignment="LEFT" heightComputationExpression="10">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelSize="10" showIcon="false" labelExpression="aql:'  [' + self.condition.printAtomicExp() + ']'" labelAlignment="LEFT" heightComputationExpression="10">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
